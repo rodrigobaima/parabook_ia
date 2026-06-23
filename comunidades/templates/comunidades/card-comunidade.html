@@ -10,16 +10,16 @@
 
     <div class="card-footer">
 
-        <a href="{% url 'acesso_comunidade' %}">
+        <a href="{% url 'comunidades:detail' comunidade.id %}">
             Entrar
         </a>
 
         {% if user.is_staff %}
-            <a href="{% url 'editar_comunidade' comunidade.id %}">
+            <a href="{% url 'comunidades:update' comunidade.id %}">
                 Editar
             </a>
 
-            <a href="{% url 'excluir_comunidade' comunidade.id %}">
+            <a href="{% url 'comunidades:delete' comunidade.id %}">
                 Excluir
             </a>
         {% endif %}

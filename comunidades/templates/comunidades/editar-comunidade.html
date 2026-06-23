@@ -1,26 +1,40 @@
-<h1>Editar Comunidade</h1>
+{% extends 'base.html' %}
+{% load static %}
 
-<form method="POST">
-    {% csrf_token %}
+{% block title %}
+Editar Comunidade
+{% endblock %}
 
-    <input
-        type="text"
-        name="nome"
-        value="{{ comunidade.nome }}"
-        required
-    >
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/comunidade.css' %}">
+{% endblock %}
 
-    <br><br>
+{% block content %}
 
-    <textarea
-        name="descricao"
-        required
-    >{{ comunidade.descricao }}</textarea>
+<div class="config-container">
+    <h2 class="config-title">Editar Comunidade</h2>
 
-    <br><br>
+    <div class="config-section">
+        <form method="POST" action="{% url 'comunidades:update' comunidade.id %}" class="config-form">
+            {% csrf_token %}
 
-    <button type="submit">
-        Atualizar
-    </button>
+            <div class="form-group">
+                <label for="input-nome" class="form-label">Nome da Comunidade</label>
+                <input type="text" id="input-nome" name="nome" class="form-input" value="{{ comunidade.nome }}" required>
+            </div>
 
-</form>
+            <div class="form-group">
+                <label for="input-descricao" class="form-label">Descrição</label>
+                <textarea id="input-descricao" name="descricao" rows="5" class="form-textarea" required>{{ comunidade.descricao }}</textarea>
+            </div>
+
+            <div class="config-actions">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa-solid fa-check"></i> Atualizar
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

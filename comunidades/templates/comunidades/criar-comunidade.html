@@ -1,27 +1,40 @@
-<h1>Criar Comunidade</h1>
+{% extends 'base.html' %}
+{% load static %}
 
-<form method="POST">
-    {% csrf_token %}
+{% block title %}
+Criar Comunidade
+{% endblock %}
 
-    <input
-        type="text"
-        name="nome"
-        placeholder="Nome da comunidade"
-        required
-    >
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/comunidade.css' %}">
+{% endblock %}
 
-    <br><br>
+{% block content %}
 
-    <textarea
-        name="descricao"
-        placeholder="Descrição"
-        required
-    ></textarea>
+<div class="config-container">
+    <h2 class="config-title">Criar Nova Comunidade</h2>
 
-    <br><br>
+    <div class="config-section">
+        <form method="POST" action="{% url 'comunidades:create' %}" class="config-form">
+            {% csrf_token %}
 
-    <button type="submit">
-        Salvar
-    </button>
+            <div class="form-group">
+                <label for="input-nome" class="form-label">Nome da Comunidade</label>
+                <input type="text" id="input-nome" name="nome" class="form-input" placeholder="Nome da comunidade" required>
+            </div>
 
-</form>
+            <div class="form-group">
+                <label for="input-descricao" class="form-label">Descrição</label>
+                <textarea id="input-descricao" name="descricao" rows="5" class="form-textarea" placeholder="Descrição da comunidade" required></textarea>
+            </div>
+
+            <div class="config-actions">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa-solid fa-check"></i> Salvar
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

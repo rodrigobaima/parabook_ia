@@ -426,58 +426,60 @@
                 <section id="configuracoes" class="tab-content">
 
                     <div class="config-container">
-                        <h2> Configurações da Conta </h2>
+                        <h2 class="config-title">Configurações da Conta</h2>
 
                         <div class="config-section">
 
-                            <h3>Conta</h3>
+                            <h3 class="config-subtitle">Editar Perfil</h3>
+                            
                             {% comment %} FORM inserido para operação Update do CRUD {% endcomment %}
-                            <form action="{% url 'perfis:perfil_pessoal' %}" method="POST">
+                            <form action="{% url 'perfis:perfil_pessoal' %}" method="POST" class="config-form">
                                 {% csrf_token %} 
-                                <div class="config-section">
-                                    <h3>Editar Perfil</h3>
-                                    
-                                    <div class="form-group">
-                                        <label for="input-nome">Nome de Exibição</label>
-                                        <input type="text" id="input-nome" name="nome" value="{{ usuario_custom.nome }}">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="input-descricao">Frase de Status (Curta)</label>
-                                        <input type="text" id="input-descricao" name="descricao_perfil" value="{{ perfil.descricao_perfil }}">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="input-localizacao">Localização / Cidade</label>
-                                        <input type="text" id="input-localizacao" name="localizacao" value="{{ perfil.localizacao|default:'' }}" placeholder="Ex: Belém - PA">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="input-bio">Biografia Detalhada</label>
-                                        <textarea id="input-bio" name="bio" rows="4" placeholder="Conte um pouco sobre você...">
-                                            {{ perfil.bio|default:'' }}
-                                        </textarea>
-                                    </div>
-
-                                    <input type="hidden" name="foto" value="{{ perfil.foto|default:'' }}">
+                                
+                                <div class="form-group">
+                                    <label for="input-nome" class="form-label">Nome de Exibição</label>
+                                    <input type="text" id="input-nome" name="nome" value="{{ usuario_custom.nome }}" class="form-input" placeholder="Seu nome completo">
                                 </div>
 
+                                <div class="form-group">
+                                    <label for="input-descricao" class="form-label">Frase de Status (Curta)</label>
+                                    <input type="text" id="input-descricao" name="descricao_perfil" value="{{ perfil.descricao_perfil }}" class="form-input" placeholder="Uma frase que te define">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="input-localizacao" class="form-label">Localização / Cidade</label>
+                                    <input type="text" id="input-localizacao" name="localizacao" value="{{ perfil.localizacao|default:'' }}" class="form-input" placeholder="Ex: Belém - PA">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="input-bio" class="form-label">Biografia Detalhada</label>
+                                    <textarea id="input-bio" name="bio" rows="5" class="form-textarea" placeholder="Conte um pouco sobre você...">{{ perfil.bio|default:'' }}</textarea>
+                                </div>
+
+                                <input type="hidden" name="foto" value="{{ perfil.foto|default:'' }}">
+
                                 <div class="config-actions">
-                                    <button type="submit" class="btn primary">Salvar Alterações</button>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fa-solid fa-check"></i> Salvar Alterações
+                                    </button>
                                 </div>
                             </form>
 
-                            <a href="{% url 'alterar_senha' %}">
-                                <button class="btn-config btn-light">
-                                    Alterar Senha
-                                </button>
-                            </a> 
+                            <div class="config-divider"></div>
 
-                            <a href="{% url 'logout' %}">
-                                <button class="btn-config btn-danger">
-                                    Sair da conta
-                                </button>
-                            </a>
+                            <div class="config-buttons-grid">
+                                <a href="{% url 'alterar_senha' %}" class="config-link">
+                                    <button class="btn btn-config btn-light">
+                                        <i class="fa-solid fa-key"></i> Alterar Senha
+                                    </button>
+                                </a> 
+
+                                <a href="{% url 'logout' %}" class="config-link">
+                                    <button class="btn btn-config btn-danger">
+                                        <i class="fa-solid fa-right-from-bracket"></i> Sair da conta
+                                    </button>
+                                </a>
+                            </div>
 
                         </div>
 

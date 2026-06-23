@@ -1073,3 +1073,214 @@ body:not(.light-mode) {
     background: radial-gradient(circle at top, #111827, #020617);
     color: #E5E7EB;
 }
+
+/* ================================================================================
+   CONFIGURAÇÕES - Estilos para formulários de comunidade (criar, editar, excluir)
+   ================================================================================ */
+
+.config-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.config-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--color-primary-dark);
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-family: var(--font-ui);
+}
+
+.config-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.config-description {
+    font-size: 1.1rem;
+    color: var(--color-ui-charcoal);
+    text-align: center;
+    margin-bottom: 1rem;
+    font-family: var(--font-body);
+}
+
+.config-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-label {
+    font-weight: var(--fw-medium);
+    color: var(--color-primary-dark);
+    font-size: 0.95rem;
+    font-family: var(--font-ui);
+}
+
+.form-input,
+.form-textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--color-neutral-tan);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    background-color: #fafafa;
+    font-family: var(--font-body);
+    color: var(--color-ui-charcoal);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: var(--color-primary-dark);
+    box-shadow: 0 0 0 3px rgba(92, 59, 46, 0.1);
+    background-color: #ffffff;
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.config-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: var(--fw-medium);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    font-family: var(--font-ui);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--color-primary-dark), var(--color-accent-olive));
+    color: white;
+    box-shadow: 0 4px 10px rgba(92, 59, 46, 0.2);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(92, 59, 46, 0.3);
+}
+
+.btn-config {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: var(--fw-medium);
+}
+
+.btn-config.btn-light {
+    background-color: #f7fafc;
+    color: var(--color-ui-charcoal);
+    border: 1px solid var(--color-neutral-tan);
+}
+
+.btn-config.btn-light:hover {
+    background-color: #edf2f7;
+    transform: translateY(-2px);
+}
+
+.btn-config.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-config.btn-danger:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
+}
+
+/* Light mode adjustments for config section */
+body.light-mode .config-container {
+    background-color: #ffffff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .config-title,
+body.light-mode .config-description,
+body.light-mode .form-label {
+    color: var(--color-primary-dark);
+}
+
+body.light-mode .form-input,
+body.light-mode .form-textarea {
+    background-color: #fafafa;
+    border-color: var(--color-neutral-tan);
+    color: var(--color-ui-charcoal);
+}
+
+body.light-mode .form-input:focus,
+body.light-mode .form-textarea:focus {
+    background-color: #ffffff;
+    border-color: var(--color-primary-dark);
+}
+
+body.light-mode .btn-config.btn-light {
+    background-color: #f7fafc;
+    border-color: var(--color-neutral-tan);
+}
+
+body.light-mode .btn-config.btn-light:hover {
+    background-color: #edf2f7;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .config-container {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+    
+    .config-title {
+        font-size: 1.5rem;
+    }
+    
+    .config-actions {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .config-container {
+        padding: 1rem;
+    }
+    
+    .form-input,
+    .form-textarea {
+        padding: 0.625rem 0.75rem;
+    }
+}
