@@ -1,15 +1,37 @@
-<h1>Excluir Comunidade</h1>
+{% extends 'base.html' %}
+{% load static %}
 
-<p>
-    Deseja realmente excluir
-    "{{ comunidade.nome }}"?
-</p>
+{% block title %}
+Excluir Comunidade
+{% endblock %}
 
-<form method="POST">
-    {% csrf_token %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/comunidade.css' %}">
+{% endblock %}
 
-    <button type="submit">
-        Sim, excluir
-    </button>
+{% block content %}
 
-</form>
+<div class="config-container">
+    <h2 class="config-title">Excluir Comunidade</h2>
+
+    <div class="config-section">
+        <p class="config-description">
+            Deseja realmente excluir a comunidade "<strong>{{ comunidade.nome }}</strong>"?
+        </p>
+
+        <form method="POST" action="{% url 'comunidades:delete' comunidade.id %}" class="config-form">
+            {% csrf_token %}
+
+            <div class="config-actions">
+                <button type="submit" class="btn btn-config btn-danger">
+                    <i class="fa-solid fa-trash"></i> Sim, excluir
+                </button>
+                <a href="{% url 'comunidades:list' %}" class="btn btn-config btn-light">
+                    <i class="fa-solid fa-arrow-left"></i> Cancelar
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
