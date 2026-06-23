@@ -1,0 +1,82 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Leitura | ParaBook
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/leitura.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<main>
+
+    <section class="container leitura-container">
+
+        <!-- INFO DO LIVRO -->
+        <section class="livro-info">
+            <h2 id="titulo"></h2>
+            <p id="autor"></p>
+        </section>
+
+        <!-- LOADING -->
+        <div id="loading" class="loading-state">
+        </div>
+
+        <!-- LEITOR PDF -->
+        <section class="leitor-pdf">
+            <canvas id="pdf-canvas"></canvas>
+        </section>
+
+        <!-- BARRA DE PROGRESSO -->
+        <div class="progresso-container">
+            <div id="barra-progresso"></div>
+        </div>
+
+        <!-- CONTROLES -->
+        <div class="controles-leitura">
+
+            <button onclick="paginaAnterior()" class="btn">
+                <i class="fa-solid fa-arrow-left"></i>
+                Anterior
+            </button>
+
+            <span id="pagina-info">
+                Página 1
+            </span>
+
+            <button onclick="proximaPagina()" class="btn">
+                Próxima
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
+        </div>
+
+        <!-- AÇÕES -->
+        <div class="acoes">
+
+            <a href="{% url 'acesso_biblioteca' %}" class="btn secondary">
+                Voltar à Biblioteca
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+{% endblock %}
+
+{% block extra_js %}
+
+<script src="{% static 'js/biblioteca.js' %}"></script>
+
+<script src="{% static 'js/leitura.js' %}"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+{% endblock %}
+
