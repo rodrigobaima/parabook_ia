@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Comunidades
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet"
+    href="{% static 'css/comunidade.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<main id="topo">
+
+    <!-- CONTAINER DE COMUNIDADES -->
+    <section class="pagina-comunidade">
+
+        <h1 class="pagina-comunidade">
+            Comunidades
+        </h1>
+
+        <h3>
+            Sinta-se livre para escolher
+            uma comunidade para participar.
+        </h3>
+
+        <p>
+            Aqui você poderá fazer amigos
+            e participar de discussões relevantes
+            ao seu interesse.
+        </p>
+
+        <a href="{% url 'criar_comunidade' %}">
+           Criar Comunidade
+        </a>
+
+        <div class="grid">
+
+            {% for comunidade in comunidades %}
+
+                {% include 'comunidades/card_comunidade.html' %}
+
+            {% empty %}
+
+                <p>
+                    Nenhuma comunidade encontrada.
+                </p>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+    <!-- BOTÃO TOPO -->
+    <a href="#topo">
+
+        <button
+            class="button-top"
+            id="voltar-topo"
+        >
+
+            <svg
+                class="svgIcon"
+                viewBox="0 0 384 512"
+            >
+                <path d="M214.6 41.4..."></path>
+            </svg>
+
+        </button>
+
+    </a>
+
+</main>
+
+{% endblock %}
+
+{% block extra_js %}
+
+<script src="{% static 'js/comunidade.js' %}"></script>
+
+<script src="{% static 'js/index.js' %}"></script>
+
+{% endblock %}
+
